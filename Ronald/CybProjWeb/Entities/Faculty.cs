@@ -13,7 +13,7 @@ namespace CybProjWeb.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string FacultyName { get; set; }
-        public int FacultyCode { get; set; }
+        public string FacultyCode { get; set; }
         private DateTime? dateCreated = null;
         public DateTime DateCreated
         {

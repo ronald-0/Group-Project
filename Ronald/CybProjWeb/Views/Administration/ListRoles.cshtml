@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CybProjWeb.Entities.Role>
+@{
+    ViewBag.Title = "All Roles";
+}
+
+
+@if (Model.Any())
+{
+    <div class="col-5 align-self-center">
+        <div class="customize-input float-right">
+            <a asp-controller="Administration" asp-action="CreateRole" class="btn btn-rounded btn-info">Create new Role</a>
+        </div>
+    </div><br />
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Role Id</th>
+                <th scope="col">Role Name</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td scope="row">@role.Id</td>
+                    <td>@role.Name</td>
+                    <td><a class="btn btn-rounded btn-primary" asp-controller="Administration" asp-action="EditRole" asp-route-id="@role.Id">Edit</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                No roles created yet.
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">List of roles</h4>
+            </div>
+
+        </div>
+    </div>
+}
+

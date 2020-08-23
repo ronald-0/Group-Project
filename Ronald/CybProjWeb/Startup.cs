@@ -53,7 +53,7 @@ namespace CybProjWeb
             services.AddScoped<IFaculty, FacultyService>();
             services.AddScoped<IDepartment, DepartmentService>();
             services.AddScoped<IGrade, GradeService>();
-            services.AddScoped<ISalary, SalaryService>();
+           // services.AddScoped<ISalary, SalaryService>();
             services.AddScoped<IUser, UserService>();
             services.AddScoped<IAccount, AccountService>();
             

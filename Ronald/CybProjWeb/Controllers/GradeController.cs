@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CybProjWeb.Entities;
+using static CybProjWeb.Enums.Enum;
 using CybProjWeb.Inteface;
 using Microsoft.AspNetCore.Mvc;
-using static CybProjWeb.Enums.Enum;
 
 
 namespace CybProjWeb.Controllers
 {
+    // [Authorize(Roles = "Admin")]
     public class GradeController : BaseController
     {
         private IGrade _grade;
@@ -26,10 +24,74 @@ namespace CybProjWeb.Controllers
             }
             return View();
         }
-
+       
         [HttpPost]
         public async Task<IActionResult> Create(Grade g)
         {
+            //FOR HOUSING
+            g.Housing = g.HousingPercent * g.BasicSalary / 100;
+            g.GrossSalary = g.BasicSalary;
+
+            if (g.HousingItemType == "Allowance")
+            {
+
+                g.GrossSalary += g.Housing;
+            }
+            else if (g.HousingItemType == "Deduction")
+            {
+                g.GrossSalary -= g.Housing;
+            }
+
+            //FOR LUNCH
+            g.Lunch = g.LunchPercent * g.BasicSalary / 100;
+
+            if (g.LunchItemType == "Allowance")
+            {
+
+                g.GrossSalary += g.Lunch;
+            }
+
+            else if (g.LunchItemType == "Deduction")
+            {
+
+                g.GrossSalary -= g.Lunch;
+            }
+
+            //FOR TRANSPORT
+            g.Transport = g.TransportPercent * g.BasicSalary / 100;
+
+            if (g.TransportItemType == "Allowance")
+            {
+
+                g.GrossSalary += g.Transport;
+            }
+            else if (g.TransportItemType == "Deduction")
+            {
+
+                g.GrossSalary -= g.Transport;
+            }
+
+            //FOR MEDICAL
+            g.Medical = g.MedicalPercent * g.BasicSalary / 100;
+
+            if (g.MedicalItemType == "Allowance")
+            {
+
+                g.GrossSalary += g.Medical;
+            }
+            else if (g.MedicalItemType == "Deduction")
+            {
+
+                g.GrossSalary -= g.Medical;
+            }
+
+            //TOTAL g
+            g.Tax = g.TaxPercent * g.GrossSalary / 100;
+
+            g.NetSalary = g.GrossSalary - g.Tax;
+
+           
+
             var createGrade = await _grade.AddAsync(g);
 
             if (createGrade)

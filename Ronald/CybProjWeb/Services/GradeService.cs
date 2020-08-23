@@ -69,9 +69,9 @@ namespace CybProjWeb.Services
             var g = await _context.Grade.FindAsync(grade.Id);
             if (g != null)
             {
-                g.GradeName = g.GradeName;
-                g.Level= g.Level;
-                g.Step = g.Step;
+                g.GradeName = grade.GradeName;
+                g.GradeLevel= grade.GradeLevel;
+                g.GradeStep = grade.GradeStep;
 
                 await _context.SaveChangesAsync();
                 return true;

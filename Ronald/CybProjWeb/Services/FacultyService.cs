@@ -69,8 +69,9 @@ namespace CybProjWeb.Services
             var fac = await _context.Faculties.FindAsync(f.Id);
             if (fac != null)
             {
-                fac.FacultyName = fac.FacultyName;
-                fac.FacultyCode = fac.FacultyCode;
+                fac.FacultyName = f.FacultyName;
+                fac.FacultyCode = f.FacultyCode;
+                
 
                 await _context.SaveChangesAsync();
                 return true;

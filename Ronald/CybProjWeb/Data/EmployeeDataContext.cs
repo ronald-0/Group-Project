@@ -19,7 +19,9 @@ namespace CybProjWeb.Data
             public virtual DbSet<User> EmpUsers { get; set; }
             public virtual DbSet<Salary> Salaries { get; set; }
             public virtual DbSet<State> States { get; set; }
+            public virtual DbSet<Role> Roless { get; set; }
             public virtual DbSet<LGA> LGAs { get; set; }
+           // public virtual DbSet<Role> RoleName { get; set; }
     }
     
 }

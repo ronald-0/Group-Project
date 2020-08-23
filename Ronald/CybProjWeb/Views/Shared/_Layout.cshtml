@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+@using Microsoft.AspNetCore.Identity
+@using CybProjWeb.Entities
+@inject SignInManager<Account> SignInManager
+@inject UserManager<Account> UserManager
+
+
+<!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
@@ -10,13 +17,16 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <title>Employee Web</title>
     <!-- Custom CSS -->
-    <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="~/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="~/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <link href="~/dist/css/style.min.css" rel="stylesheet">
+    <link href="~/sweetAlert/sweetalert.css" rel="stylesheet" />
+    <script src="~/sweetAlert/sweetalert.min.js"></script>
+    <script src="~/sweetAlert/sweetalert-dev.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -54,23 +64,9 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
-                        <!-- Logo icon -->
-                        <a href="index.html">
-                            <b class="logo-icon">
-                                <!-- Dark Logo icon -->
-                                <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo icon -->
-                                <img src="../assets/images/logo-icon.png" alt="homepage" class="light-logo" />
-                            </b>
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
-                        </a>
+                        <img src="~/assets/images/favicon.png" />
+                        <h3>Employee Web</h3><!--///////////ggtregy4hy4h5uy4h3hhyg54f-->
+
                     </div>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -93,117 +89,11 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                         <!-- Notification -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
-                               id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false">
-                                <span><i data-feather="bell" class="svg-icon"></i></span>
-                                <span class="badge badge-primary notify-no rounded-circle">5</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
-                                <ul class="list-style-none">
-                                    <li>
-                                        <div class="message-center notifications position-relative">
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)"
-                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <div class="btn btn-danger rounded-circle btn-circle">
-                                                    <i data-feather="airplay" class="text-white"></i>
-                                                </div>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">Luanch Admin</h6>
-                                                    <span class="font-12 text-nowrap d-block text-muted">
-                                                        Just see
-                                                        the my new
-                                                        admin!
-                                                    </span>
-                                                    <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)"
-                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <span class="btn btn-success text-white rounded-circle btn-circle">
-                                                    <i data-feather="calendar" class="text-white"></i>
-                                                </span>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">Event today</h6>
-                                                    <span class="font-12 text-nowrap d-block text-muted text-truncate">
-                                                        Just
-                                                        a reminder that you have event
-                                                    </span>
-                                                    <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)"
-                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <span class="btn btn-info rounded-circle btn-circle">
-                                                    <i data-feather="settings" class="text-white"></i>
-                                                </span>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">Settings</h6>
-                                                    <span class="font-12 text-nowrap d-block text-muted text-truncate">
-                                                        You
-                                                        can customize this template
-                                                        as you want
-                                                    </span>
-                                                    <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="javascript:void(0)"
-                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                                <span class="btn btn-primary rounded-circle btn-circle">
-                                                    <i data-feather="box" class="text-white"></i>
-                                                </span>
-                                                <div class="w-75 d-inline-block v-middle pl-2">
-                                                    <h6 class="message-title mb-0 mt-1">Pavan kumar</h6> <span class="font-12 text-nowrap d-block text-muted">
-                                                        Just
-                                                        see the my admin!
-                                                    </span>
-                                                    <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link pt-3 text-center text-dark" href="javascript:void(0);">
-                                            <strong>Check all notifications</strong>
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                         <!-- End Notification -->
                         <!-- ============================================================== -->
                         <!-- create new -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i data-feather="settings" class="svg-icon"></i>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item d-none d-md-block">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <div class="customize-input">
-                                    <select class="custom-select form-control bg-white custom-radius custom-shadow border-0">
-                                        <option selected>EN</option>
-                                        <option value="1">AB</option>
-                                        <option value="2">AK</option>
-                                        <option value="3">BE</option>
-                                    </select>
-                                </div>
-                            </a>
-                        </li>
+
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
@@ -229,48 +119,63 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
-                                <img src="../assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle"
-                                     width="40">
+                               
                                 <span class="ml-2 d-none d-lg-inline-block">
-                                    <span>Hello,</span> <span class="text-dark">Jason Doe</span> <i data-feather="chevron-down"
+                                    <span>Hello,</span> <span class="text-dark">@UserManager.GetUserName(User)</span> <i data-feather="chevron-down"
                                                                                                     class="svg-icon"></i>
                                 </span>
                             </a>
+
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i data-feather="user"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    My Profile
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i data-feather="credit-card"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    My Balance
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i data-feather="mail"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    Inbox
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i data-feather="settings"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    Account Setting
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i data-feather="power"
-                                       class="svg-icon mr-2 ml-1"></i>
-                                    Logout
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <div class="pl-4 p-3">
-                                    <a href="javascript:void(0)" class="btn btn-sm btn-info">
-                                        View
-                                        Profile
+                                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                                {
+                                    <a class="dropdown-item" href="javascript:void(0)">
+                                        <i data-feather="user"
+                                           class="svg-icon mr-2 ml-1"></i>
+                                        View Profile
                                     </a>
-                                </div>
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="LogOut">
+                                        <i data-feather="power"
+                                           class="svg-icon mr-2 ml-1"></i>
+                                        Logout
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="pl-4 p-3">
+
+                                    </div>
+                                }
+                                else if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+
+                                {
+                                    <a class="dropdown-item" asp-controller="User" asp-action="ViewProfile">
+                                        <i data-feather="user"
+                                           class="svg-icon mr-2 ml-1"></i>
+                                        View Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="LogOut">
+                                        <i data-feather="power"
+                                           class="svg-icon mr-2 ml-1"></i>
+                                        Logout
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="pl-4 p-3">
+
+                                    </div>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Login">
+                                        <i data-feather="user"
+                                           class="svg-icon mr-2 ml-1"></i>
+                                        Login
+                                    </a>
+
+                                }
+
                             </div>
                         </li>
                         <!-- ============================================================== -->
@@ -293,97 +198,205 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
+                            <a class="sidebar-link sidebar-link" asp-controller="Home" asp-action="Index"
                                aria-expanded="false">
                                 <i data-feather="home" class="feather-icon"></i><span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="globe" class="feather-icon"></i><span class="hide-menu">Department</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="user-plus" class="feather-icon"></i><span class="hide-menu">Faculty</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="file-text" class="feather-icon"></i><span class="hide-menu">Grade</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="grid" class="feather-icon"></i><span class="hide-menu">LGA</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="dollar-sign" class="feather-icon"></i><span class="hide-menu">Role</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="feather" class="feather-icon"></i><span class="hide-menu">Salary</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="feather" class="feather-icon"></i><span class="hide-menu">State</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="index.html"
-                               aria-expanded="false">
-                                <i data-feather="feather" class="feather-icon"></i><span class="hide-menu">User</span>
-                            </a>
-                        </li>
+                        <li class="list-divider"></li>
+
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-small-cap"><span class="hide-menu">Admin</span></li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                   aria-expanded="false">
+                                    <i class="fas fa-user"></i><span class="hide-menu">Admin</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                    <li class="sidebar-item">
+                                        <a asp-controller="Administration" asp-action="ListRoles" class="sidebar-link">
+                                            <span class="hide-menu">
+                                                ListRoles
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a asp-controller="Administration" asp-action="CreateRole" class="sidebar-link">
+                                            <span class="hide-menu">
+                                                Create Role
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+
+
+                            <!--SETUP SALARY-->
+
+                            <li class="list-divider"></li>
+                            <li class="nav-small-cap"><span class="hide-menu">Employee</span></li>
+
+                            <li class="sidebar-item">
+                                <a asp-controller="Department" asp-action="Index" class="sidebar-link"
+                                   aria-expanded="false">
+                                    <i class="fas fa-building"></i><span class="hide-menu">
+                                        Department
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-controller="Faculty" asp-action="Index" class="sidebar-link"
+                                   aria-expanded="false">
+                                    <i class="fas fa-industry"></i><span class="hide-menu">
+                                        Faculty
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a asp-controller="Grade" asp-action="Index" class="sidebar-link"
+                                   aria-expanded="false">
+                                    <i class="fas fa-level-up-alt"></i><span class="hide-menu">
+                                        Grade
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                   aria-expanded="false">
+                                    <i class="fas fa-user"></i><span class="hide-menu">Employee</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                    <li class="sidebar-item">
+                                        <a asp-controller="User" asp-action="Create" class="sidebar-link">
+                                            <span class="hide-menu">
+                                                Setup Profile
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-item">
+                                        <a asp-controller="User" asp-action="Index" class="sidebar-link">
+                                            <span class="hide-menu">
+                                                List of Employees
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            @*<li class="sidebar-item">
+                <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                   aria-expanded="false">
+                    <i class="fas fa-money-bill-alt"></i><span class="hide-menu">Salary</span>
+                </a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item">
+                        <a asp-controller="Salary" asp-action="Create" class="sidebar-link">
+                            <span class="hide-menu">
+                                Compute Salary
+                            </span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a asp-controller="Salary" asp-action="Index" class="sidebar-link">
+                            <span class="hide-menu">
+                                List of Salaries
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+                            *@
+
+                        }
+                        else if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                   aria-expanded="false">
+                                    <i class="fas fa-money-bill-alt"></i><span class="hide-menu">Salary</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                    <li class="sidebar-item">
+                                        <a asp-controller="User" asp-action="PersonalSalary" class="sidebar-link">
+                                            <span class="hide-menu">
+                                                View Salary Structure
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        }
+
+
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Good Day @UserManager.GetUserName(User)</h3>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- Main JS-->
+            <script src="~/js/main.js"></script>
+            <div class="container">
+                <partial name="_CookieConsentPartial" />
+                <partial name="_NotificationPanel" />
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- apps -->
     <!-- apps -->
-    <script src="../dist/js/app-style-switcher.js"></script>
-    <script src="../dist/js/feather.min.js"></script>
-    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../dist/js/sidebarmenu.js"></script>
+    <script src="~/dist/js/app-style-switcher.js"></script>
+    <script src="~/dist/js/feather.min.js"></script>
+    <script src="~/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="../dist/js/custom.min.js"></script>
+    <script src="~/dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
-    <script src="../assets/extra-libs/c3/d3.min.js"></script>
-    <script src="../assets/extra-libs/c3/c3.min.js"></script>
-    <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="../assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
-
+    <script src="~/assets/extra-libs/c3/d3.min.js"></script>
+    <script src="~/assets/extra-libs/c3/c3.min.js"></script>
+    <script src="~/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/dist/js/pages/dashboards/dashboard1.min.js"></script>
     @RenderSection("Scripts", required: false)
-    <footer class="footer text-center text-muted">
-        All Rights Reserved by Adminmart. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-    </footer>
+    <footer class="footer text-center text-muted"></footer>
 </body>
+
 </html>

@@ -1,0 +1,282 @@
+﻿@model IEnumerable<CybProjWeb.Entities.User>
+@using CybProjWeb.Entities
+@inject SignInManager<Account> SignInManager
+@inject UserManager<Account> UserManager
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Personal Salary";
+}
+@{
+    var loggedInUserName = @UserManager.GetUserName(User);
+    var loggedInEmail = await UserManager.GetEmailAsync(
+                        UserManager.Users.FirstOrDefault(u => u.UserName == loggedInUserName));
+}
+@foreach (var s in Model)
+{
+
+    @if (s.Account.Email == loggedInEmail)
+    {
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-center mb-4">
+                                <h4 class="card-title">Employee Details</h4>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table no-wrap v-middle mb-0">
+                                    <thead>
+                                        <tr class="border-0">
+                                            <th class="border-0 font-14 font-weight-medium text-muted">
+                                                Name
+                                            </th>
+                                            <th class="border-0 font-14 font-weight-medium text-muted px-2">
+                                                Grade
+                                            </th>
+                                            <th class="border-0 font-14 font-weight-medium text-muted">
+                                                Level
+                                            </th>
+                                            <th class="border-0 font-14 font-weight-medium text-muted px-2">
+                                                Step
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="border-top-0 px-2 py-4">
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.Account.Email" class="form-control" id="name" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td class="border-top-0 text-muted px-2 py-4 font-14">
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.GradeName" class="form-control" id="grade" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td class="border-top-0 px-2 py-4">
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.GradeLevel" class="form-control" id="name" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td class="border-top-0 text-muted px-2 py-4 font-14">
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.GradeStep" class="form-control" id="grade" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!--SALARY BREAKDOWN-->
+
+
+                            <div class="d-flex align-items-center mb-4">
+                                <h4 class="card-title">Salary Breakdown</h4>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table no-wrap v-middle mb-0">
+                                    <thead>
+                                        <tr class="border-0">
+                                            <th class="border-0 font-14 font-weight-medium text-muted">
+                                                PayItem
+                                            </th>
+                                            <th class="border-0 font-14 font-weight-medium text-muted px-2">
+                                                Percentage(N)
+                                            </th>
+
+                                            <th class="border-0 font-14 font-weight-medium text-muted text-center">
+                                                PayItem Type
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td>
+                                                <label for="Housing">Housing</label>
+                                            </td>
+
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.Housing" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.HousingItemType" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <label for="Lunch">Lunch</label>
+
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.Lunch" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.LunchItemType" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <label for="Transport">Transport</label>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.Transport" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.TransportItemType" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <label for="Medical">Medical</label>
+                                            </td>
+
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.Medical" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                                <div class="form-group">
+                                                    <input type="text" value="@s.MedicalItemType" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tax </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" value="N @s.Tax" class="form-control" disabled />
+                                                    <span class="text-danger"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--Total Salary-->
+
+                <div class="d-flex align-items-center mb-4">
+                    <h3 class="card-title">Total Salary</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table no-wrap v-middle mb-0">
+
+                        <tbody>
+                            <tr>
+                                <td class="border-top-0 px-2 py-4">
+                                    <h4>Basic Salary:</h4>
+                                </td>
+                                <td class="border-top-0 px-2 py-4">
+                                    --------------------------------
+                                </td>
+                                <td class="border-top-0 text-muted px-2 py-4 font-14">
+                                    <h4>N @s.BasicSalary</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="border-top-0 px-2 py-4">
+                                    <h4>Gross Salary:</h4>
+                                </td>
+                                <td class="border-top-0 px-2 py-4">
+                                    --------------------------------
+                                </td>
+                                <td class="border-top-0 text-muted px-2 py-4 font-14">
+                                    <h4>N @s.GrossSalary</h4>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="border-top-0 px-2 py-4">
+                                    <h4>Net Salary:</h4>
+                                </td>
+                                <td class="border-top-0 px-2 py-4">
+                                    --------------------------------
+                                </td>
+                                <td class="border-top-0 text-muted px-2 py-4 font-14">
+                                    <h4>N @s.NetSalary</h4>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    }
+    @*else
+    {
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2>
+                        Hello @UserManager.GetUserName(User), you do not have a salary structure yet!
+                    </h2>
+                </div>
+            </div>
+        </div>
+    }*@
+
+
+}
+
+
+
+
+
+
+
+
+

@@ -4,17 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using CybProjWeb.Entities;
 using CybProjWeb.Inteface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static CybProjWeb.Enums.Enum;
 
 namespace CybProjWeb.Controllers
 {
+   // [Authorize(Roles = "Admin")]
     public class FacultyController : BaseController
     {
         private IFaculty _faculty;
         public FacultyController(IFaculty fac)
         {
             _faculty = fac;
+           
         }
         public async Task<IActionResult> Index()
         {

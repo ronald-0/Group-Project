@@ -8,6 +8,6 @@ namespace CybProjWeb.Entities
 {
     public class Role : IdentityRole
     {
-        public string RoleName { get; set; }    
+
     }
 }

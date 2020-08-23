@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CybProjWeb.Services
 {
-    public class UserService :IUser
+    public class UserService : IUser
     {
         private EmployeeDataContext _context;
         public UserService(EmployeeDataContext context)
@@ -27,10 +27,11 @@ namespace CybProjWeb.Services
         {
             try
             {
+                
                 await _context.AddAsync(user);
                 await _context.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }
@@ -54,7 +55,7 @@ namespace CybProjWeb.Services
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            return await _context.Departments.Include(f => f.Faculty).ToListAsync();
+            return await _context.EmpUsers.Include(d => d.Department).Include(g => g.Grade).Include(a => a.Account).Include(s => s.State).Include(l => l.LGA).ToListAsync();
         }
 
         public async Task<User> GetById(int Id)
@@ -70,12 +71,13 @@ namespace CybProjWeb.Services
             {
                 user.FirstName = u.FirstName;
                 user.LastName = u.LastName;
-                user.GradeId = u.GradeId;
-                user.FacultyId = u.FacultyId;
-                user.DeptId = u.DeptId;
-                user.Email = user.Email;
-                user.State = user.State;
-                user.LGA = user.LGA;
+               // user.GradeId = u.GradeId;
+               // user.FacultyId = u.FacultyId;
+                user.DepartmentId = u.DepartmentId;
+               // user.Email = user.Email;
+                
+              //  user.States = user.States;
+               // user.LGAs = user.LGAs;
 
                 await _context.SaveChangesAsync();
                 return true;

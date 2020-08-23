@@ -1,0 +1,23 @@
+﻿@model CybProjWeb.Models.CreateRoleModel
+
+@{
+    ViewData["Title"] = "Create Role";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-sm-12 col-md-6 col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">create a new Role</h4>
+            <form method="post" asp-action="CreateRole" class="mt-4">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="placeholder"
+                           placeholder="RoleName" asp-for="RoleName" required>
+                </div><br />
+                <button type="submit" class="btn btn-rounded btn-outline-success">Submit</button>
+                <a href="Cancel" type="button" class="btn btn-rounded btn-outline-danger">Cancel</a>
+            </form>
+
+        </div>
+    </div>
+ </div>

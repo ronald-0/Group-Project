@@ -11,5 +11,6 @@ namespace CybProjWeb.Inteface
     {
         Task<bool> LoginIn(LoginViewModel loginModel);
         Task<bool> Signupp(Account user, string password);
+        
     }
 }

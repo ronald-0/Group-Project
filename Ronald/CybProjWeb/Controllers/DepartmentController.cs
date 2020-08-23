@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CybProjWeb.Entities;
 using CybProjWeb.Inteface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using static CybProjWeb.Enums.Enum;
 
 namespace CybProjWeb.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class DepartmentController : BaseController
     {
         private IDepartment _dept;  
@@ -45,10 +47,16 @@ namespace CybProjWeb.Controllers
             var createDept = await _dept.AddAsync(d);
             if (createDept)
             {
-               // Alert("Book Created successfully.", NotificationType.success);
+                 Alert("Book Created successfully.", NotificationType.success);
+                //Alert("Department Created unsuccessfully.", NotificationType.error);
                 return RedirectToAction("Index");
             }
+            else
+            {
+                Alert("Department Created unsuccessfully, Name already exists or bad data entered", NotificationType.error);
+            }
             return View();
+            
         }
         [HttpGet]
         public async Task<IActionResult> Create()

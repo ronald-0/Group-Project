@@ -30,7 +30,7 @@ namespace CybProjWeb.Services
                 await _context.AddAsync(s);
                 await _context.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }
@@ -54,7 +54,7 @@ namespace CybProjWeb.Services
 
         public async Task<IEnumerable<Salary>> GetAll()
         {
-            return await _context.Salaries.Include(g=>g.Grade).ToListAsync();
+            return await _context.Salaries.Include(g => g.Grade).Include(u => u.User).ToListAsync();
         }
 
         public async Task<Salary> GetById(int Id)
@@ -69,10 +69,23 @@ namespace CybProjWeb.Services
             var s = await _context.Salaries.FindAsync(salary.Id);
             if (s != null)
             {
-                s.GradeId = salary.Id;
-                s.PayItem = salary.PayItem;
-                s.PayItemType = salary.PayItem;
-                s.Amount = salary.Amount;
+                s.BasicSalary = salary.BasicSalary;
+                s.GradeName = salary.GradeName;
+                s.Housing = salary.Housing;
+                s.HousingPercent = salary.HousingPercent;
+                s.HousingItemType = salary.HousingItemType;
+                s.UserId= salary.UserId;
+                s.Lunch = salary.Lunch;
+                s.LunchPercent = salary.LunchPercent;
+                s.LunchItemType = salary.LunchItemType;
+                s.Transport = salary.Transport;
+                s.TransportPercent = salary.TransportPercent;
+                s.TransportItemType = salary.TransportItemType;
+                s.Medical = salary.Medical;
+                s.MedicalPercent = salary.MedicalPercent;
+                s.MedicalItemType = salary.MedicalItemType;
+               
+               
                 await _context.SaveChangesAsync();
                 return true;
             }

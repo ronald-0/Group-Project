@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\EmpWebRepo\\CybProjWeb\\CybProjWeb.csproj": {}
+    "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\latest latest\\EmpWebRepo-master\\CybProjWeb\\CybProjWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\EmpWebRepo\\CybProjWeb\\CybProjWeb.csproj": {
+    "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\latest latest\\EmpWebRepo-master\\CybProjWeb\\CybProjWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\EmpWebRepo\\CybProjWeb\\CybProjWeb.csproj",
+        "projectUniqueName": "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\latest latest\\EmpWebRepo-master\\CybProjWeb\\CybProjWeb.csproj",
         "projectName": "CybProjWeb",
-        "projectPath": "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\EmpWebRepo\\CybProjWeb\\CybProjWeb.csproj",
+        "projectPath": "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\latest latest\\EmpWebRepo-master\\CybProjWeb\\CybProjWeb.csproj",
         "packagesPath": "C:\\Users\\Ronald Onwubuya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\EmpWebRepo\\CybProjWeb\\obj\\",
+        "outputPath": "C:\\Users\\Ronald Onwubuya\\Documents\\Cyberspace Limited\\Group Project\\latest latest\\EmpWebRepo-master\\CybProjWeb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
